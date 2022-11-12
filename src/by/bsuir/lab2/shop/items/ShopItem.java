@@ -2,6 +2,9 @@ package by.bsuir.lab2.shop.items;
 
 import by.bsuir.lab2.bean.ITransferData;
 import by.bsuir.lab2.bean.MapTransferData;
+import by.bsuir.lab2.dao.interf.ItemData;
+
+import java.util.*;
 
 /**
  * Represent abstraction of items in some shop
@@ -9,6 +12,21 @@ import by.bsuir.lab2.bean.MapTransferData;
  *
  */
 public abstract class ShopItem {
+	
+	protected ShopItem() {
+		
+	}
+	
+	protected ShopItem(ITransferData data) {
+		itemName = (String)data.getProperty("itemName");
+		itemPrice = (int)data.getProperty("itemPrice");
+	}
+	
+	@Override
+	public String toString() {
+		return "Item: " + itemName + " Price: " + itemPrice;
+	}
+	
 	
 	/**
 	 * Get data to transfer throught dao layer
@@ -22,12 +40,39 @@ public abstract class ShopItem {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "Item: " + itemName + " Price: " + itemPrice;
+	public static ShopItem createShopItemByUniqueId(String uniqueId, ITransferData data) throws IllegalArgumentException{
+		if (!registeredShopItems.containsKey(uniqueId)) {
+			throw new IllegalArgumentException("There is no registered class "+uniqueId);
+		}
+		ShopItem item = registeredShopItems.get(uniqueId).createShopItem(data);
+		return item;
 	}
+	
+	
+	/**
+	 * Returns unique id (class name?) of shop item
+	 * @return
+	 */
+	public abstract String getUniqueStringId();
+	
+	
+	/**
+	 * When dynamicly add new class of shop item, this method must be called to register
+	 * this class in the table
+	 * @param shopItemUniqueId
+	 * @param itemFactory - lambda, that can create corresponding shop item
+	 */
+	protected static void registerNewShopItem(String shopItemUniqueId, ShopItemFactory itemFactory) {
+		if (registeredShopItems.containsKey(shopItemUniqueId)) {
+			throw new IllegalArgumentException("Class " + shopItemUniqueId + " had been registered yet");
+		}
+		registeredShopItems.put(shopItemUniqueId, itemFactory);
+	}
+	
 	
 	
 	protected String itemName = "Item";
 	protected int itemPrice;	//Price in 0.01 BYN
+	
+	private static HashMap<String, ShopItemFactory> registeredShopItems = new HashMap<String, ShopItemFactory>();
 }

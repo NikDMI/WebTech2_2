@@ -8,7 +8,7 @@ public interface ItemData {
 	
 	public void writeData(ITransferData data) throws DaoException;
 	
-	public void writeData(ITransferData[] data) throws DaoException;
+	public void writeData(ArrayList<ITransferData> data) throws DaoException;
 	
 	public ArrayList<ITransferData> readData() throws DaoException;
 }

@@ -17,6 +17,14 @@ public class MapTransferData implements ITransferData{
 		mPropertyMap.put(propertyName, data);
 	}
 	
+	@Override
+	public void removeProperty(String propertyName) throws IllegalArgumentException{
+		if (!mPropertyMap.containsKey(propertyName)) {
+			throw new IllegalArgumentException("There is no property " + propertyName);
+		}
+		mPropertyMap.remove(propertyName);
+	}
+	
 	
 	/**
 	 * Combine properties of transfer data

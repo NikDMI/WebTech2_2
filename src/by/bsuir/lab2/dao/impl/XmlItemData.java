@@ -20,6 +20,9 @@ public final class XmlItemData implements ItemData {
 	}
 	
 	
+	/**
+	 * Write xml file with single element
+	 */
 	public void writeData(ITransferData data) throws DaoException {
 		startWriteDocument();
 		writeXmlElement(data);
@@ -27,7 +30,10 @@ public final class XmlItemData implements ItemData {
 	}
 	
 	
-	public void writeData(ITransferData[] data) throws DaoException {
+	/**
+	 * Write xml file with multiple elements
+	 */
+	public void writeData(ArrayList<ITransferData> data) throws DaoException {
 		startWriteDocument();
 		for(ITransferData dataItem: data) {
 			writeXmlElement(dataItem);
@@ -37,6 +43,9 @@ public final class XmlItemData implements ItemData {
 	
 	
 	
+	/**
+	 * Read xml file with corresponding format
+	 */
 	public ArrayList<ITransferData> readData() throws DaoException {
 		ArrayList<ITransferData> propertyList = new ArrayList<>();
 		try {
@@ -57,11 +66,17 @@ public final class XmlItemData implements ItemData {
 	}
 	
 	
+	/**
+	 * Create header tag of xml tree
+	 * @throws DaoException
+	 */
 	private void startWriteDocument() throws DaoException {
 		try {
 			fileWriter = new FileWriter(fileName);
 			xmlWriter =  xmlOutputFactory.createXMLStreamWriter(fileWriter);
 			xmlWriter.writeStartDocument("1.0");
+			xmlWriter.writeCharacters("\n");
+			xmlWriter.writeStartElement(ROOT_TAG);
 			xmlWriter.writeCharacters("\n");
 		} catch (Exception e) {
 			throw new DaoException(e);
@@ -69,8 +84,13 @@ public final class XmlItemData implements ItemData {
 	}
 	
 	
+	/**
+	 * Close header xml tag
+	 * @throws DaoException
+	 */
 	private void endWriteDocument() throws DaoException {
 		try {
+			xmlWriter.writeEndElement();
 			xmlWriter.writeEndDocument();
 			xmlWriter.flush();
 			xmlWriter.close();
@@ -80,10 +100,16 @@ public final class XmlItemData implements ItemData {
 	}
 	
 	
+	/**
+	 * Write tags and attributes of single object
+	 * @param data - object to write
+	 * @throws DaoException
+	 */
 	private void writeXmlElement(ITransferData data) throws DaoException {
 		Map<String, Object> dataProperties = data.getMapOfProperties();
 		Set<String> propertyNames =  dataProperties.keySet();
 		try {	//Write header of transfer data
+			xmlWriter.writeCharacters("  ");
 			xmlWriter.writeStartElement(OUTER_TAG);
 			xmlWriter.writeCharacters("\n");
 		} catch (Exception  e) {
@@ -91,7 +117,7 @@ public final class XmlItemData implements ItemData {
 		}
 		for (String property: propertyNames) {
 			try {
-				xmlWriter.writeCharacters("  ");
+				xmlWriter.writeCharacters("   ");
 				xmlWriter.writeStartElement(property);
 				xmlWriter.writeAttribute("value", dataProperties.get(property).toString());
 				xmlWriter.writeEndElement();
@@ -102,13 +128,22 @@ public final class XmlItemData implements ItemData {
 			}
 		}
 		try {	//Write footer of transfer data
+			xmlWriter.writeCharacters("  ");
 			xmlWriter.writeEndElement();
+			xmlWriter.writeCharacters("\n");
 		} catch (Exception  e) {
 			throw new DaoException(e);
 		}
 	}
 	
 	
+	
+	/**
+	 * Try read object with it's properties
+	 * @param xmlStreamReader
+	 * @return
+	 * @throws DaoException
+	 */
 	private ITransferData readNextTransferData(XMLStreamReader xmlStreamReader) throws DaoException {
 		int currentState = 0;
 		ITransferData propertyData = new MapTransferData();
@@ -141,4 +176,5 @@ public final class XmlItemData implements ItemData {
 	private FileWriter fileWriter;
 	private XMLStreamWriter xmlWriter;
 	private final String OUTER_TAG = "TransferDataElement";
+	private final String ROOT_TAG = "root";
 }

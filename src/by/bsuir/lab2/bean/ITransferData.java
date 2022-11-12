@@ -24,6 +24,14 @@ public interface ITransferData {
 	
 	
 	/**
+	 * Removes property if it's exists
+	 * @param propertyName
+	 * @throws IllegalArgumentException
+	 */
+	public void removeProperty(String propertyName) throws IllegalArgumentException;
+	
+	
+	/**
 	 * 
 	 * @param propertyName - name of the property
 	 * @return object of property
