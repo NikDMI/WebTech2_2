@@ -1,6 +1,8 @@
 package by.bsuir.lab2.services.interf;
 
 import by.bsuir.lab2.shop.items.*;
+
+import java.nio.channels.NonReadableChannelException;
 import java.util.*;
 
 import by.bsuir.lab2.bean.ITransferData;
@@ -43,7 +45,7 @@ public final class ShopBasket {
 			transferDataList.add(transferData);
 		}
 		try {
-		daoItemData.writeData(transferDataList);
+			daoItemData.writeData(transferDataList);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -74,6 +76,31 @@ public final class ShopBasket {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+	}
+	
+	
+	public ShopItem getChipestItem() {
+		int currentPrice = Integer.MAX_VALUE;
+		ShopItem chipItem = null;
+		for (ShopItem item: basket) {
+			int itemPrice = item.getPrice();
+			if (itemPrice < currentPrice) {
+				chipItem = item;
+				currentPrice = itemPrice;
+			}
+		}
+		return chipItem;
+	}
+	
+	
+	public ArrayList<ShopItem> getItemsByUniqueName(String uniqueName) {
+		ArrayList<ShopItem> items = new ArrayList<>();
+		for (ShopItem item: basket) {
+			if (item.getUniqueStringId() == uniqueName) {
+				items.add(item);
+			}
+		}
+		return items;
 	}
 	
 	

@@ -13,18 +13,24 @@ import java.util.*;
  */
 public abstract class ShopItem {
 	
-	protected ShopItem() {
-		
+	protected ShopItem(String itemName, int itemPrice) {
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
 	}
 	
 	protected ShopItem(ITransferData data) {
 		itemName = (String)data.getProperty("itemName");
-		itemPrice = (int)data.getProperty("itemPrice");
+		itemPrice = Integer.valueOf((String)data.getProperty("itemPrice"));
 	}
 	
 	@Override
 	public String toString() {
 		return "Item: " + itemName + " Price: " + itemPrice;
+	}
+	
+	
+	public int getPrice() {
+		return itemPrice;
 	}
 	
 	

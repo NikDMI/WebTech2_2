@@ -53,7 +53,7 @@ public final class XmlItemData implements ItemData {
 			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(fileReader);
 			int currentState = xmlStreamReader.next();
 			while (currentState != XMLStreamReader.END_DOCUMENT) {
-				if (currentState == XMLStreamReader.START_ELEMENT) {
+				if (currentState == XMLStreamReader.START_ELEMENT && xmlStreamReader.getLocalName() != ROOT_TAG) {
 					ITransferData propertyData = readNextTransferData(xmlStreamReader);
 					propertyList.add(propertyData);
 				}
@@ -152,7 +152,7 @@ public final class XmlItemData implements ItemData {
 				currentState = xmlStreamReader.next();
 				switch (currentState) {
 				case XMLStreamReader.START_ELEMENT:
-					propertyData.addProperty(xmlStreamReader.getAttributeLocalName(0),
+					propertyData.addProperty(xmlStreamReader.getLocalName(),
 							xmlStreamReader.getAttributeValue(0));
 					while (currentState != XMLStreamReader.END_ELEMENT) {
 						currentState = xmlStreamReader.next();

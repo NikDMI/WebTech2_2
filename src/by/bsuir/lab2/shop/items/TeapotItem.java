@@ -4,8 +4,9 @@ import by.bsuir.lab2.bean.*;
 
 public class TeapotItem extends ShopItem {
 	
-	public TeapotItem() {
-		super();
+	public TeapotItem(int volume) {
+		super("Teapot", volume * 128);
+		this.volume = volume;
 	}
 	
 	@Override
@@ -24,7 +25,7 @@ public class TeapotItem extends ShopItem {
 	
 	protected TeapotItem(ITransferData data) {
 		super(data);
-		volume = (int)data.getProperty("volume");
+		volume = Integer.valueOf((String)data.getProperty("volume"));
 	}
 	
 	

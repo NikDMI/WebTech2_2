@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<root>
+  <TransferDataElement>
+   <volume value="1448"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="185344"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="151777"></itemPrice>
+   <numberOfCores value="10"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+  <TransferDataElement>
+   <volume value="1171"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="149888"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="151777"></itemPrice>
+   <numberOfCores value="10"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+  <TransferDataElement>
+   <volume value="653"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="83584"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="196777"></itemPrice>
+   <numberOfCores value="13"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+  <TransferDataElement>
+   <volume value="1448"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="185344"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="151777"></itemPrice>
+   <numberOfCores value="10"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+  <TransferDataElement>
+   <volume value="1171"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="149888"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="151777"></itemPrice>
+   <numberOfCores value="10"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+  <TransferDataElement>
+   <volume value="653"></volume>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.TeapotItem"></UniqueShopItemId>
+   <itemName value="Teapot"></itemName>
+   <itemPrice value="83584"></itemPrice>
+  </TransferDataElement>
+  <TransferDataElement>
+   <UniqueShopItemId value="by.bsuir.lab2.shop.items.LaptopItem"></UniqueShopItemId>
+   <itemName value="Laptop"></itemName>
+   <itemPrice value="196777"></itemPrice>
+   <numberOfCores value="13"></numberOfCores>
+   <displayRatio value="1.7777777910232544"></displayRatio>
+  </TransferDataElement>
+</root>
