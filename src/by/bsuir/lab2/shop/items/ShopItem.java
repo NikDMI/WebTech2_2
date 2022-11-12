@@ -28,6 +28,6 @@ public abstract class ShopItem {
 	}
 	
 	
-	protected String itemName;
+	protected String itemName = "Item";
 	protected int itemPrice;	//Price in 0.01 BYN
 }
